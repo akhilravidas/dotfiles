@@ -1,0 +1,26 @@
+alias rebash="source ~/.bash_profile"  
+alias p="python"
+
+alias S="git commit -a -m \"checkpoint\""
+alias FR="git fetch;git svn rebase"
+alias AM="git commit -a --amend"
+alias e=$EDITOR
+alias Cd="cd ~/www"
+alias cl='printf "\33[2J"'
+alias gsf="git show --name-only";
+alias gd="git diff --color";
+alias gcm="git checkout master";
+
+alias    ls="ls -alh"
+alias    gr="grep -ri"
+alias   grn="grep -rin"
+alias   grl="grep -ril"
+alias   grv="grep -v"
+alias    ga="git add"
+alias    gs="git show"
+alias    gl="git log --abbrev-commit --date=local --decorate"
+
+# load facebook specific alias
+if [ -f $HOME/.fbspecific/.fbalias ]; then
+  . $HOME/.fbspecific/.fbalias;
+fi
