@@ -55,5 +55,9 @@ esac
 set -o vi
 
 # vi:set filetype=sh:
-export PATH=$HOME/local/node/bin:$PATH
+export PATH=/usr/local/git/bin/:$PATH
 
+# history
+export HISTCONTROL=erasedups
+export HISTSIZE=100000
+shopt -s histappend
