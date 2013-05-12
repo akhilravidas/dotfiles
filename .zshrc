@@ -4,6 +4,9 @@
 # functions, options, key bindings, etc.
 #
 
+#vi mode
+set -o vi
+
 autoload -U compinit && compinit
 
 #allow tab completion in the middle of a word
@@ -19,9 +22,6 @@ setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 bindkey '^R' history-incremental-search-backward
-
-#vi mode
-set -o vi
 
 if [ -f $HOME/.fbspecific-zsh ]; then
   source $HOME/.fbspecific-zsh
