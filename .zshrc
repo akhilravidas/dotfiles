@@ -37,7 +37,7 @@ echo $(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/{\1}/')
 
 setopt prompt_subst
 autoload -U colors && colors
-export PS1='[%n@%m %{$fg[yellow]%}%c%{$reset_color%}%{$fg[green]%}$(f_git_branch)%{$reset_color%}]\$ '
+export PS1='[%{$fg[blue]%}%n@%m%{$reset_color%} %{$fg[yellow]%}%c%{$reset_color%}%{$fg[green]%}$(f_git_branch)%{$reset_color%}]\$ '
 
 #cd
 setopt correctall
