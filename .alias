@@ -1,6 +1,3 @@
-alias rebash="source ~/.bash_profile"  
-alias p="python"
-
 alias S="git commit -a -m \"checkpoint\""
 alias AM="git commit -a --amend"
 alias e=$EDITOR
@@ -11,8 +8,3 @@ alias gcm="git checkout master";
 
 alias ls="ls -alh"
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
-
-# load facebook specific alias
-if [ -f $HOME/.fbspecific/.fbalias ]; then
-  . $HOME/.fbspecific/.fbalias;
-fi
