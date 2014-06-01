@@ -7,4 +7,4 @@ alias gd="git diff --color";
 alias gcm="git checkout master";
 
 alias ls="ls -alh"
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
+
