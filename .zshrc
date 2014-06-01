@@ -23,10 +23,6 @@ setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 bindkey '^R' history-incremental-search-backward
 
-if [ -f $HOME/.fbspecific-zsh ]; then
-  source $HOME/.fbspecific-zsh
-fi
-
 if [ -f $HOME/.alias ]; then
   source $HOME/.alias
 fi 
@@ -46,3 +42,6 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 
 #zsh specific alias
 alias dh='dirs -v'
+
+# Used for send text at start in iTerm2
+function runtmux() { tmux new-session -As future }
