@@ -1,9 +1,3 @@
-#
-# .zshrc is sourced in interactive shells.
-# It should contain commands to set up aliases,
-# functions, options, key bindings, etc.
-#
-
 #vi mode
 set -o vi
 
@@ -43,5 +37,5 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 #zsh specific alias
 alias dh='dirs -v'
 
-# Used for send text at start in iTerm2
 function runtmux() { tmux new-session -As future }
+function itermStartup() { runtmux; }
