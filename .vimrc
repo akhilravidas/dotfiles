@@ -37,39 +37,17 @@ set ruler                     " show row, column
 
 " other
 set undolevels=10000          " number of undos stored
+set cryptmethod=blowfish
 
-" make split windows easier to navigate
+" Splits 
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
-"map <C-m> <C-w>_
-
-" bind "gb" to "git blame" for visual and normal mode.
-:vmap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
-:nmap gb :!git blame % <CR>
-
-:nmap TT :vsplit .<CR>
-set modeline
-set ls=2
-
-" To handle :W to :w
-cnoreabbrev W w
-colorscheme darkblue
-
-set showtabline=2
 
 " Ctags to new split mapping
 map <C-\> :vsp<CR>:exec("tjump ".expand("<cword>"))<CR>
 map <A-]> :split<CR>:exec("tjump ".expand("<cword>"))<CR>
-
-" Switch between headers and source
-map <F5> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-map <F6> :vsp<CR>:e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-
-
-syntax on
-set autoindent
 
 " Open vertical splits on :diffsplit
 set diffopt=filler,vertical
@@ -80,6 +58,28 @@ vnoremap <c-]> g<c-]>
 nnoremap g<c-]> <c-]>
 vnoremap g<c-]> <c-]>
 
+" bind "gb" to "git blame" for visual and normal mode.
+:vmap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
+:nmap gb :!git blame % <CR>
+
+set modeline
+set ls=2
+
+" To handle :W to :w
+cnoreabbrev W w
+colorscheme darkblue
+
+set showtabline=2
+
+
+" Switch between headers and source
+map <F5> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+map <F6> :vsp<CR>:e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
+
+syntax on
+set autoindent
+
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 autocmd BufNewFile,BufRead *.cpp match OverLength /\%81v.\+/
 autocmd BufNewFile,BufRead *.h match OverLength /\%81v.\+/
@@ -88,3 +88,5 @@ autocmd BufNewFile,BufRead *.java match OverLength /\%101v.\+/
 
 set rtp+=$GOROOT/misc/vim
 filetype plugin indent on
+
+execute pathogen#infect()
