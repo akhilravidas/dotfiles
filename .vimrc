@@ -49,6 +49,12 @@ map <C-l> <C-w>l
 map <C-\> :vsp<CR>:exec("tjump ".expand("<cword>"))<CR>
 map <A-]> :split<CR>:exec("tjump ".expand("<cword>"))<CR>
 
+" Command aliases
+" Open recently opened files in a searchable buffer (same as :bro old with search)
+command Recent new +setl\ buftype=nofile | 0put =v:oldfiles | nnoremap <buffer> <CR> :e <C-r>=getline('.')<CR><CR>
+" Show full path
+command PA echo expand('%:p')
+
 " Open vertical splits on :diffsplit
 set diffopt=filler,vertical
 
