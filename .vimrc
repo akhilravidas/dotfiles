@@ -1,9 +1,11 @@
+
+
 set nocompatible
 set autochdir
 
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 " use haskell highlighting on hsc files
@@ -26,10 +28,10 @@ set nocompatible
 set incsearch                 " incremental search
 set hlsearch                  " highlighting when searching
 
-set backspace=2
+set backspace=indent,eol,start
 
 " display
-set nonumber                  " show/hide line numbers (nu/nonu)
+set number                    " show/hide line numbers (nu/nonu)
 set showcmd                   " show command in last line
 set showmatch                 " flashes matching paren when one is typed
 set showmode                  " show editing mode in status (-- INSERT --)
@@ -49,12 +51,6 @@ map <C-l> <C-w>l
 map <C-\> :vsp<CR>:exec("tjump ".expand("<cword>"))<CR>
 map <A-]> :split<CR>:exec("tjump ".expand("<cword>"))<CR>
 
-" Command aliases
-" Open recently opened files in a searchable buffer (same as :bro old with search)
-command Recent new +setl\ buftype=nofile | 0put =v:oldfiles | nnoremap <buffer> <CR> :e <C-r>=getline('.')<CR><CR>
-" Show full path
-command PA echo expand('%:p')
-
 " Open vertical splits on :diffsplit
 set diffopt=filler,vertical
 
@@ -67,21 +63,25 @@ vnoremap g<c-]> <c-]>
 " bind "gb" to "git blame" for visual and normal mode.
 :vmap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
 :nmap gb :!git blame % <CR>
+" bind "hb" to "hg blame" for visual and normal mode.
+" TODO figure out line blame in hg
+:vmap hb :!hg blame -cu % <CR>
+:nmap hb :!hg blame -cu % <CR>
 
 set modeline
-set ls=2
 
 " To handle :W to :w
 cnoreabbrev W w
 colorscheme darkblue
 
-set showtabline=2
-
-
 " Switch between headers and source
 map <F5> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 map <F6> :vsp<CR>:e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
+" FIXME Improve
+command Recent new +setl\ buftype=nofile | 0put =v:oldfiles | nnoremap <buffer> <CR> :e <C-r>=getline('.')<CR><CR>
+" Shortcut to get full path
+command Path echo expand('%:p')
 
 syntax on
 set autoindent
@@ -93,6 +93,9 @@ autocmd BufNewFile,BufRead *.php match OverLength /\%81v.\+/
 autocmd BufNewFile,BufRead *.java match OverLength /\%101v.\+/
 
 set rtp+=$GOROOT/misc/vim
-filetype plugin indent on
 
 execute pathogen#infect()
+" Required:
+filetype plugin indent on
+
+set tags=tags;/

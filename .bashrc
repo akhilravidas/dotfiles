@@ -45,7 +45,7 @@ case "$TERM" in
         # the sequence '\033k<string>\033\\' sets the title to <string>
         # the sequence '\033k\033\\' causes screen to take the title
         # from the next command entered
-        PROMPT_COMMAND='echo -ne "\033_t "'\
+        PROMPT_COMMAND='echo -ne "\033_t "'\
 '"${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\\\\033k\033\\\\"'
         ;;
     *)

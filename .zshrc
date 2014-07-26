@@ -21,13 +21,13 @@ if [ -f $HOME/.alias ]; then
   source $HOME/.alias
 fi 
 
-function f_git_branch {
+function f_vcs_branch {
 echo $(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/{\1}/')
 }
 
 setopt prompt_subst
 autoload -U colors && colors
-export PS1='[%{$fg[blue]%}%n@%m%{$reset_color%} %{$fg[yellow]%}%c%{$reset_color%}%{$fg[green]%}$(f_git_branch)%{$reset_color%}]\$ '
+export PS1='[%{$fg[blue]%}%n@%m%{$reset_color%} %{$fg[yellow]%}%c%{$reset_color%}%{$fg[green]%}$(f_vcs_branch)%{$reset_color%}]\$ '
 
 #cd
 setopt correctall
@@ -39,3 +39,10 @@ alias dh='dirs -v'
 
 function runtmux() { tmux new-session -As future }
 function itermStartup() { runtmux; }
+function dock() { boot2docker init;  boot2docker start; export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375; }
+
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+
+export EDITOR=vi
+
+export GOPATH="$HOME/go"
