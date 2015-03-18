@@ -49,3 +49,4 @@ export GOPATH="$HOME/go"
 
 setopt PRINT_EXIT_VALUE
 REPORTTIME=1
+cdpath=(~ ~/src)
