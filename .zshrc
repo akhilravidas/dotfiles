@@ -48,3 +48,4 @@ export EDITOR=vi
 export GOPATH="$HOME/go"
 
 setopt PRINT_EXIT_VALUE
+REPORTTIME=1
