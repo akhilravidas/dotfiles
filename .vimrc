@@ -92,9 +92,6 @@ autocmd BufNewFile,BufRead *.h match OverLength /\%81v.\+/
 autocmd BufNewFile,BufRead *.php match OverLength /\%81v.\+/
 autocmd BufNewFile,BufRead *.java match OverLength /\%101v.\+/
 
-set rtp+=$GOROOT/misc/vim
-
-execute pathogen#infect()
 " Required:
 filetype plugin indent on
 
